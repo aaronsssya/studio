@@ -1,3 +1,4 @@
+
 {
   "name": "OmniGen",
   "version": "1.0.0",
@@ -27,6 +28,12 @@
     {
       "matches": ["<all_urls>"],
       "js": ["contentScript.js"]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["contentScript.js"],
+      "matches": ["<all_urls>"]
     }
   ]
 }

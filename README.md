@@ -45,14 +45,73 @@ OmniGen is a Chrome extension that utilizes generative AI to process text based 
 To test the Chrome extension locally:
 
 1.  Ensure you have the latest version of Node.js and npm installed.
-2.  Install the dependencies by running `npm install` in the project directory.
-3.  Build the project by running `npm run build`.
-4.  Create `index.html`, `background.js`, `contentScript.js`, and `options.html` files in the root directory of your project:
-    - `index.html`: This file will be the popup for your extension. You can copy the content of `src/app/page.tsx` to this file, ensuring all necessary JavaScript and CSS files are linked correctly.
-    - `background.js`: This file will handle background tasks for your extension. Refer to Chrome extension documentation for implementation details.
-    - `contentScript.js`: This script will run on web pages and can interact with the DOM. Implement the functionality to capture selected text.
-    - `options.html`: This file will be the options page for your extension.
+2.  Install the dependencies by running `npm install` in the project directory:
+    ```bash
+    npm install
+    ```
+3.  Build the project by running `npm run build`:
+    ```bash
+    npm run build
+    ```
+4.  **Create the following files in the root directory of your project:**
+    -   `index.html`: This file will be the popup for your extension. Copy the following content to this file:
+        ```html
+        <!DOCTYPE html>
+        <html>
+        <head>
+          <title>OmniGen</title>
+          <link rel="stylesheet" href="src/app/globals.css">
+        </head>
+        <body>
+          <div id="root"></div>
+          <script src="src/app/page.js" type="module"></script>
+        </body>
+        </html>
+        ```
+    -   `options.html`: This file will be the options page for your extension. Copy the following content to this file:
+        ```html
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <title>OmniGen Options</title>
+            <link rel="stylesheet" href="src/app/globals.css">
+        </head>
+        <body>
+            <h1>OmniGen Options</h1>
+            <p>This is the options page for the OmniGen Chrome extension.</p>
+            <script src="options.js"></script>
+        </body>
+        </html>
+        ```
+    -   `background.js`:  Create an empty `background.js` file in the root directory.
+    -   `contentScript.js`: Create an empty `contentScript.js` file in the root directory.
 5.  Load the unpacked extension in Chrome as described in the Installation section, pointing to the project directory.
+
+### Troubleshooting Local Testing Errors
+
+-   **"Could not load javascript 'contentScript.js' for script."**:
+    -   Ensure that the `contentScript.js` file exists in the root directory.
+    -   Verify that the `manifest.json` file correctly references `contentScript.js` within the `content_scripts` array:
+        ```json
+        "content_scripts": [
+          {
+            "matches": ["<all_urls>"],
+            "js": ["contentScript.js"]
+          }
+        ]
+        ```
+    -   Add `contentScript.js` to the `web_accessible_resources` array in `manifest.json`:
+        ```json
+        "web_accessible_resources": [
+          {
+            "resources": ["contentScript.js"],
+            "matches": ["<all_urls>"]
+          }
+        ]
+        ```
+-   **"Manifest file is missing or unreadable"**:
+    -   Double-check that `manifest.json` exists in the root directory.
+    -   Ensure that the file is not empty and contains valid JSON.
 
 ## Usage
 
