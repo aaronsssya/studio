@@ -47,7 +47,12 @@ To test the Chrome extension locally:
 1.  Ensure you have the latest version of Node.js and npm installed.
 2.  Install the dependencies by running `npm install` in the project directory.
 3.  Build the project by running `npm run build`.
-4.  Load the unpacked extension in Chrome as described in the Installation section, pointing to the build directory.
+4.  Create `index.html`, `background.js`, `contentScript.js`, and `options.html` files in the root directory of your project:
+    - `index.html`: This file will be the popup for your extension. You can copy the content of `src/app/page.tsx` to this file, ensuring all necessary JavaScript and CSS files are linked correctly.
+    - `background.js`: This file will handle background tasks for your extension. Refer to Chrome extension documentation for implementation details.
+    - `contentScript.js`: This script will run on web pages and can interact with the DOM. Implement the functionality to capture selected text.
+    - `options.html`: This file will be the options page for your extension.
+5.  Load the unpacked extension in Chrome as described in the Installation section, pointing to the project directory.
 
 ## Usage
 
