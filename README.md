@@ -1,5 +1,67 @@
-# Firebase Studio
+# OmniGen Chrome Extension
 
-This is a NextJS starter in Firebase Studio.
+OmniGen is a Chrome extension that utilizes generative AI to process text based on user input and selected AI functions. It integrates with OpenAI Compatible APIs, allowing users to configure API settings for customized text processing.
 
-To get started, take a look at src/app/page.tsx.
+## Features
+
+- **Text Input**: Allows users to input text (up to 100 characters).
+- **AI Function Selection**: Provides a selection of AI functions to process the input text.
+- **OpenAI Compatible API Integration**: Integrates with OpenAI Compatible APIs, enabling users to configure settings such as Base URL, API Key, and Model IDs.
+- **Context Menu Integration**: Processes selected text from web pages using the selected AI function.
+- **History**: Maintains a history of past interactions and generated content.
+- **Copy Functionality**: Copies the output text to the clipboard.
+- **Character Count**: Displays the character count for the input text field.
+- **Web UI Link**: Provides a link to a web UI for additional functionality.
+- **Dark Mode Support**: Supports both light and dark modes, adapting to the user's system preferences.
+
+## AI Functions
+
+- **CNGenerator**: Generates Chinese names based on the input prompt.
+- **EnGenerator**: Generates English names based on the input prompt.
+- **DocSummarizer**: Summarizes the content of a web page given its URL.
+- **EnToZh**: Translates English text to Chinese.
+
+## Installation
+
+1.  Clone this repository.
+2.  Open Chrome and navigate to `chrome://extensions/`.
+3.  Enable "Developer mode" in the top right corner.
+4.  Click "Load unpacked" and select the directory of the cloned repository.
+
+## Configuration
+
+1.  After installing the extension, click on its icon in the Chrome toolbar to open the popup.
+2.  Click on the "Settings" button to configure the API settings:
+    -   **Base URL**: The base URL of the OpenAI Compatible API.
+    -   **API Key**: Your API key for authentication.
+    -   **Default Model ID**: The default model ID for general text processing.
+    -   **EnGenerator Model ID**: The model ID specifically for the EnGenerator function.
+    -   **DocSummarizer Model ID**: The model ID specifically for the DocSummarizer function.
+3.  Input your text in the provided textarea, select an AI function, and click "Process with AI".
+4.  The result will be displayed in the result textarea, and you can copy it to your clipboard using the "Copy Result" button.
+
+## Local Testing
+
+To test the Chrome extension locally:
+
+1.  Ensure you have the latest version of Node.js and npm installed.
+2.  Install the dependencies by running `npm install` in the project directory.
+3.  Build the project by running `npm run build`.
+4.  Load the unpacked extension in Chrome as described in the Installation section, pointing to the build directory.
+
+## Usage
+
+1.  Open the Chrome extension popup by clicking on the extension icon.
+2.  Enter your text in the input field (up to 100 characters).
+3.  Select an AI function from the dropdown.
+4.  Click the "Process with AI" button to generate text based on the selected function.
+5.  View the result in the output field.
+6.  Use the "Copy Result" button to copy the generated text to your clipboard.
+
+## Contributing
+
+Feel free to contribute to this project by submitting issues and pull requests.
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
